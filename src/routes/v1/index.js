@@ -1,8 +1,9 @@
 const express = require('express');
+const { InfoController } = require('../../controllers')
+
+
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.send("Hellow");
-})
+router.get('/info', InfoController.info)
 
 module.exports = router

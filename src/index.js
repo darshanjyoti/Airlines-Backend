@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { PORT } =  require('./config');//it will automaticlly import index.js file
+const { ServerConfig } =  require('./config');//it will automaticlly import index.js file
 const apiRoutes = require('./routes')
 
 const app = express();
@@ -17,6 +17,6 @@ app.get('/health', (req, res)=>{
     )
 })
 
-app.listen(PORT, ()=>{
-    console.log(`Server is listenting at Port ${PORT}`);
+app.listen(ServerConfig.PORT, ()=>{
+    console.log(`Server is listenting at Port ${ServerConfig.PORT}`);
 })
