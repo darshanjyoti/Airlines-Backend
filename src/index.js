@@ -4,7 +4,8 @@ const { ServerConfig } =  require('./config');//it will automaticlly import inde
 const apiRoutes = require('./routes')
 
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 //whenever we get a req from '/api', routes to  apiRoutes
 app.use('/api', apiRoutes);
 
