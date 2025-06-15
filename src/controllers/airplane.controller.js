@@ -46,5 +46,17 @@ const getAirplane = async (req, res)=>{
     }
 }
 
+const destroyAirplane = async (req, res)=>{
+    try {
+        const airplane = await AirplaneService.destroyAirplane(req.params.id);
+        SuccessResponse.data = airplane;
+        return res.status(StatusCodes.OK).json(SuccessResponse)
 
-module.exports = {createAirplane, getAirplanes, getAirplane}
+    } catch (error) {
+        ErrorResponse.error = error;
+        res.status(error.statusCode).json(ErrorResponse)
+    }
+}
+
+
+module.exports = {createAirplane, getAirplanes, getAirplane, destroyAirplane}
