@@ -42,12 +42,23 @@ class CrudRepository{
             return response;
     }
 
-    async update(id, data){
-            const response = await this.model.update(data,{
-                id: id
-            });
-            return response;
-    }
+    async update(id, data) {
+        try {
+        const [updatedCount] = await this.model.update(data, {
+            where: { id }
+        });
+
+        if (updatedCount === 0) {
+            throw new Error('No rows updated');
+        }
+
+        // Fetch and return the updated record
+        const updatedRecord = await this.model.findByPk(id);
+        return updatedRecord;
+        } catch (error) {
+          throw error;
+       }
+   }
 }
 
 module.exports = CrudRepository

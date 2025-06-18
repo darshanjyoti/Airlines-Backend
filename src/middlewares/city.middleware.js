@@ -3,9 +3,9 @@ const { ErrorResponse } = require('../utils/common');
 const AppError = require("../utils/errors/app.error");
 
 const validateCreateRequest = (req, res, next)=>{
-    if(!req.body || !req.body.modelNumber){
-        ErrorResponse.message = "Something went wrong while creating an airplane";
-        ErrorResponse.error = new AppError(["Model number not fount in incoming request in correct format"], StatusCodes.BAD_REQUEST)
+    if( !req.body || !req.body.name){
+        ErrorResponse.message = "Something went wrong while creating a city";
+        ErrorResponse.error = new AppError(["Name not fount in incoming request in correct format"], StatusCodes.BAD_REQUEST)
         return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse)
     }
     next();

@@ -9,5 +9,7 @@ router.post('/', AirplaneMiddleware.validateCreateRequest, AirplaneController.cr
 router.get('/', AirplaneController.getAirplanes);
 router.get('/:id', AirplaneController.getAirplane);
 router.delete('/:id', AirplaneController.destroyAirplane);
+// PATCH /api/v1/airplanes/:id
+router.patch('/:id', AirplaneController.updateAirplane);
 module.exports = router
 
